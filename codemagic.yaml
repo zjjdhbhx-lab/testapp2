@@ -4,11 +4,9 @@ workflows:
     environment:
       flutter: stable
       xcode: latest
-      ios_signing:
-        provisioning_type: development
     scripts:
       - flutter pub get
-      - flutter build ipa --debug --export-method=development
+      - flutter build ipa --debug --no-codesign --export-method=development
     artifacts:
       - build/ios/ipa/*.ipa
     publishing:
