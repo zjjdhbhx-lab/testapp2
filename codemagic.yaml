@@ -1,0 +1,16 @@
+workflows:
+  ios-build:
+    name: iOS Build
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - flutter pub get
+      - flutter build ios --debug --no-codesign
+      - cd build/ios/iphoneos && zip -r Runner.app.zip Runner.app
+    artifacts:
+      - build/ios/iphoneos/Runner.app.zip
+    publishing:
+      email:
+        recipients:
+          - zjjdhbhx@gmail.com
