@@ -6,7 +6,7 @@ workflows:
       xcode: latest
     scripts:
       - flutter pub get
-      - flutter build ios --debug --no-codesign
+      - flutter build ios --release --no-codesign
       - mkdir -p Payload
       - cp -R build/ios/iphoneos/Runner.app Payload/
       - zip -r testapp2.ipa Payload/
