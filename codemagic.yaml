@@ -6,9 +6,12 @@ workflows:
       xcode: latest
     scripts:
       - flutter pub get
-      - flutter build ipa --debug --no-codesign --export-method=development
+      - flutter build ios --debug --no-codesign
+      - mkdir -p Payload
+      - cp -R build/ios/iphoneos/Runner.app Payload/
+      - zip -r testapp2.ipa Payload/
     artifacts:
-      - build/ios/ipa/*.ipa
+      - testapp2.ipa
     publishing:
       email:
         recipients:
